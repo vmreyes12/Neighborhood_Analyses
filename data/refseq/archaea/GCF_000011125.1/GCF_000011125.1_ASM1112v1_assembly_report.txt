@@ -1,0 +1,28 @@
+# Assembly name:  ASM1112v1
+# Organism name:  Aeropyrum pernix K1 (crenarchaeotes)
+# Infraspecific name:  strain=K1
+# Taxid:          272557
+# BioSample:      SAMD00061092
+# BioProject:     PRJNA211
+# Submitter:      NITE
+# Date:           2006-10-11
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Complete Genome
+# Genome representation: full
+# Relation to type material: assembly from type material
+# GenBank assembly accession: GCA_000011125.1
+# RefSeq assembly accession: GCF_000011125.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000011135.1	GCF_000011135.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+ANONYMOUS	assembled-molecule	na	Chromosome	BA000002.3	=	NC_000854.2	Primary Assembly	1669696	na

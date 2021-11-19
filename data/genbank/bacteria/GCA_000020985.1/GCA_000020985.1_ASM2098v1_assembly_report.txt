@@ -1,0 +1,28 @@
+# Assembly name:  ASM2098v1
+# Organism name:  Thermodesulfovibrio yellowstonii DSM 11347 (bacteria)
+# Infraspecific name:  strain=DSM 11347
+# Taxid:          289376
+# BioSample:      SAMN02603929
+# BioProject:     PRJNA30733
+# Submitter:      The J. Craig Venter Institute
+# Date:           2008-09-26
+# Assembly type:  na
+# Release type:   major
+# Assembly level: Complete Genome
+# Genome representation: full
+# Relation to type material: assembly from type material
+# GenBank assembly accession: GCA_000020985.1
+# RefSeq assembly accession: GCF_000020985.1
+# RefSeq assembly and GenBank assemblies identical: yes
+#
+## Assembly-Units:
+## GenBank Unit Accession	RefSeq Unit Accession	Assembly-Unit name
+## GCA_000020995.1	GCF_000020995.1	Primary Assembly
+#
+# Ordered by chromosome/plasmid; the chromosomes/plasmids are followed by
+# unlocalized scaffolds.
+# Unplaced scaffolds are listed at the end.
+# RefSeq is equal or derived from GenBank object.
+#
+# Sequence-Name	Sequence-Role	Assigned-Molecule	Assigned-Molecule-Location/Type	GenBank-Accn	Relationship	RefSeq-Accn	Assembly-Unit	Sequence-Length	UCSC-style-name
+ANONYMOUS	assembled-molecule	na	Chromosome	CP001147.1	=	NC_011296.1	Primary Assembly	2003803	na
