@@ -9,6 +9,8 @@ The following must be installed and in your path:
 - [MMSeqs](https://github.com/soedinglab/MMseqs2)
 - [FastTree](http://www.microbesonline.org/fasttree/)
 - [MUSCLE](http://www.drive5.com/muscle/muscle.html)
+- [numpy](https://numpy.org/)
+- [pandas](https://pandas.pydata.org/)
 
 ## Methods
 
