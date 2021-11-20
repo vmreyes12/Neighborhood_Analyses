@@ -24,6 +24,7 @@ The following must be installed and in your path:
 ## Methods
 
 It is recommended to run this script as a python notebook. The script can be run as an stand along script, but there will be a fair amount of editing needed beforehand. Nonetheless, if you choose to run it as a script, be sure to make all the edits provided in the instructions before hand. 
+Additionally, you need to structure your directories appropriately or the code may break. The directory structure of the files provided here will be valid for the code within the code itself.
 
 ### 1. Download genomes 
 The first two cells of the notebook will allow you to download genomes to your directory. Make sure you use the directory structure in the repository.
