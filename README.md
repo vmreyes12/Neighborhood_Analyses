@@ -20,7 +20,7 @@ This script was developed and executed on Ubuntu 18.04.5 LTS 64-Bit, Intel® Cor
 
 While this script is primarily made available for anyone to follow along the workflow, this script can be adapted to search for the genomic context of your gene of interest. To achieve this for your own purposes you will need:
 
-Once you have HMMER installed, you will need to develop an HMM that searches for your protein of interest. Generally, a good way to go about it is to use a multifasta seed set for the protein motif you're interested in (e.g., [PF00384](https://pfam.xfam.org/family/PF00384#tabview=tab3)
+Once you have HMMER installed, you will need to develop an HMM that searches for your protein of interest. Generally, a good way to go about it is to use a multifasta seed set for the protein motif you're interested in (e.g., [PF00384](https://pfam.xfam.org/family/PF00384#tabview=tab3))
 
 You will want to do a simple MUSCLE alignment
 ```
