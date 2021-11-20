@@ -1,4 +1,12 @@
-# Comparative genomics of DIR
+# Neighborhood Analyses of Genomes in Genbank and RefSeq
+
+T
+
+
+If this script turns out being useful for your research, I'd greatly appreciate the citation
+Please cite: __Reyes-Umana, V., Henning, Z., Lee, K. et al. Genetic and phylogenetic analysis of dissimilatory iodate-reducing bacteria identifies potential niches across the world’s oceans. ISME J (2021). https://doi.org/10.1038/s41396-021-01034-5__
+
+## Comparative genomics of DIR
 
 How conserved are the proteins near iodate reductase (IdrA) across the phylogeny of IdrA and IdrA/AioA-like proteins?
 
@@ -113,12 +121,53 @@ You will get two trees out of the cells that draw trees. Each has its utility. T
 The default settings give you some good stuff, but I recommend changing it to your needs. 
 
 ### 4. Define gene neighborhood composition
-Obtain genes within +/- 10 positions of HMM hits ("gene neigborhoods")
-Group proteins from gene neighborhoods by sequence similarity ("subfamilies")
+This step has two different functions, the first part will obtain genes within +/- 10 positions of HMM hits to search for "gene neigborhoods". This data is extremely useful when trying to understand the genomic context of your hits, and it's crucial for testing the stringency of your HMM model. You can expand the neighborhood size, but that is _not recommended_ doing so may be taxing on your computer and often provides you with marginally more useful information. You will be able to export these data into a csv. This data is searchable, but only useful once you've grouped your proteins into subfamilies.
+
+The second part allows you to group proteins from gene neighborhoods by sequence similarity ("subfamilies"). 
+It is imperative that the subfamilies directory is empty at this point except for the following files:
+- neighborhoods.faa
+- subfamilies.py
+
+Move any other file to an archive folder for your later use and analysis.
+
+First step is to run the cell containing:
+```
+seqs ="/home/victor/Downloads/dir-comparative-genomics/data/subfamilies/neighborhoods.faa"
+mmseq_output = './data/subfamilies/mmseq' 
+```
+
+Next, open your shell in the `./data/subfamilies` directory, change the directory, and run the following commands in sequence:
+```
+$ awk 'BEGIN {RS = ">" ; FS = "\n" ; ORS = ""} $2 {print ">"$0}' /path/to/data/subfamilies/neighborhoods.faa | awk '/^>/{f=!d[$1];d[$1]=1}f' > /path/to/data/subfamilies/neighborhoods_clean.faa
+$ ./subfamilies.py neighborhoods_clean.faa
+```
+Running this will put out a file called `neighborhoods_clean.faa` which the `subfamilies.py` script uses to produce a folder called `neighborhoods_clean.faa_proteinClustering`.
+
+These files will then be used by the following cell in the python notebook called __Create a readable tab separated file with protein subfamilies__ to do just that. Run the cell and it will produce:
+- orf2subfamily.tsv
+- orf2subfamily_clean.tsv
+
+You can read these files, along with everything else in the proteinClustering folder, but the most useful data comes up in the next section.
 
 ## Analysis
+- What are the functions of these subfamilies?
+Running the first analysis cell will provide you with the answer you've been looking for all along! You will get an excel file titled `subfamily_analysis.xlsx` saved onto your ./data directory. This file is very useful and tells you all the genes near your gene of interest, what subfamily they belong to, and a bunch of additional information. You can use your favorite excel functions to filter, group, and pivot table the data into oblivion. 
+
+
 - Which subfamilies are conserved which clades?
-- What the functions of those subfamilies?
 
+This next output is by far the most useful summary of your data, especially when paired with the information from the above analysis. You will get a graphical output, organized in the tree order from your earlier phylogenetic tree. All these pieces of data together visualizes the conservation of protein subfamilies within each organism, and the clade. Examples of the output are below (the raw output is much larger!)
 
+### The top:
+![top](https://user-images.githubusercontent.com/27031932/142739150-c50a00ee-d0ed-4688-b597-63519e41749b.png)
+
+### Genomes with the IRI:
+![DIR](https://user-images.githubusercontent.com/27031932/142739155-a0357ba1-0653-4b2b-9afb-e07c57b1d3d9.png)
+
+### Colorbar:
+![legend](https://user-images.githubusercontent.com/27031932/142739156-8c6db0f3-8069-460c-aba5-d5b1bb441862.png)
+
+These images can be manipulated further by saving the resulting output as an SVG and displaying the data in a meaningful way.
+
+Hopefully this tutorial was useful, and you can apply this analysis notebook to  whatever you deem necessary!
 
