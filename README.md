@@ -11,6 +11,7 @@ The following must be installed and in your path:
 - [MUSCLE](http://www.drive5.com/muscle/muscle.html)
 - [numpy](https://numpy.org/)
 - [pandas](https://pandas.pydata.org/)
+- [ete3](http://etetoolkit.org/)
 
 ## Methods
 
@@ -72,11 +73,46 @@ faa_outgroup = './data/tree/aioA.faa'
 temp = './data/tree/temp.faa'
 faa = './data/tree/iriA-all.faa'
 ```
+A couple things to note here:
+There is a filtering option for you to use:
+```
+filt = 80
+f_aln = './data/tree/iriA-'+ str(filt) + '.aln'
+filter_gaps = ' '.join(['python3', './scripts/remove-gapped-positions.py', '-p', str(filt), '-i', aln, '-o', f_aln])
+sp.call(filter_gaps, shell=True)
+```
+The tree alignment doesn't use this option, but you can if you want. Just make sure to change:
+```
+fasttree = ' '.join(['fasttree','-boot 10000', aln, ">", tree])
+```
+to
+```
+fasttree = ' '.join(['fasttree','-boot 10000', f_aln, ">", tree])
+```
 
+Also note that the `-boot 10000` option is turned on. You can change this in case you want to change the number of bootstraps. I recommend looking at the fasttree documentation. 
 
-Define groups within the tree ("clades")
+After running this cell, you should have files with the extensions:
+- .aln
+- .nwk
 
-### . Define gene neighborhood composition
+The subsequent cell will do some pythonic magic to add human readable names to the accession numbers.
+
+Finally, you will get to the point where you will draw your tree.
+This will use the ete3 package and draw the tree inline. 
+
+A few considerations at this point:
+- Make sure to [set your outgroup](http://etetoolkit.org/docs/latest/tutorial/tutorial_trees.html#tree-rooting) so that you can meaningfully infer phylogeny on your tree
+- Be sure to look at the ete3 documentation. There are a lot of things you can do with this package that allows you to color clades, and change tree styles.
+- The support values are drawn onto the tree as black (>0.99), dark gray (>0.90), and light gray (>0.80). I don't recommend you change these, but you can. 
+
+You will get two trees out of the cells that draw trees. Each has its utility. The expanded tree tells you the phylogeny of each hit. The collapsed tree shows you the different IdrA clades:
+
+![image](https://user-images.githubusercontent.com/27031932/142703922-4c6e75fa-efa8-4ad4-be38-56bea9a9d248.png)
+
+The default settings give you some good stuff, but I recommend changing it to your needs. 
+
+### 4. Define gene neighborhood composition
 Obtain genes within +/- 10 positions of HMM hits ("gene neigborhoods")
 Group proteins from gene neighborhoods by sequence similarity ("subfamilies")
 
