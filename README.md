@@ -1,14 +1,6 @@
 # Neighborhood Analyses of Genomes in Genbank and RefSeq
 
-T
-
-
-If this script turns out being useful for your research, I'd greatly appreciate the citation
-Please cite: __Reyes-Umana, V., Henning, Z., Lee, K. et al. Genetic and phylogenetic analysis of dissimilatory iodate-reducing bacteria identifies potential niches across the world’s oceans. ISME J (2021). https://doi.org/10.1038/s41396-021-01034-5__
-
-## Comparative genomics of DIR
-
-How conserved are the proteins near iodate reductase (IdrA) across the phylogeny of IdrA and IdrA/AioA-like proteins?
+This script replicates the subfamilies analysis used to ascertain the gene neighborhood around iodate reductases (IdrA). This procedure was used to demonstrate that the idrA gene is accompanied by the idrB, IdrP1, and IdrP2. The IdrP1 and IdrP2 genes are absent from the very similar AioA. This is the basis of the proposed functional difference between IdrA and AioA, which have similar primary amino acid sequences.
 
 ## Dependencies
 
@@ -20,6 +12,36 @@ The following must be installed and in your path:
 - [numpy](https://numpy.org/)
 - [pandas](https://pandas.pydata.org/)
 - [ete3](http://etetoolkit.org/)
+- [HMMER](http://hmmer.org/download.html)
+
+This script was developed and executed on Ubuntu 18.04.5 LTS 64-Bit, Intel® Core™ i5-6200U CPU @ 2.30GHz × 4, and 8 GB of Memory.
+
+## Using this for your protein of interest
+
+While this script is primarily made available for anyone to follow along the workflow, this script can be adapted to search for the genomic context of your gene of interest. To achieve this for your own purposes you will need:
+
+Once you have HMMER installed, you will need to develop an HMM that searches for your protein of interest. Generally, a good way to go about it is to use a multifasta seed set for the protein motif you're interested in (e.g., [PF00384](https://pfam.xfam.org/family/PF00384#tabview=tab3)
+
+You will want to do a simple MUSCLE alignment
+```
+$ muscle -in fasta.faa -out fasta.aln
+```
+You will then want to build your HMM
+```
+$ hmmbuild fasta.hmm fasta.aln
+```
+
+You should then test your HMM to set an appropriate threshold. There are many considerations in determining threshold beyond the scope of this tutorial, but one great place to start is testing your HMM against the reference protein dataset on [EMBL-EBI's HMMER Search](https://www.ebi.ac.uk/Tools/hmmer/search/hmmsearch). 
+
+Last thing you're going to want is genomes! This is covered in the methods below; however, a good start would be to take the Genbank or RefSeq accessions from the EMBL-EBI search and place them into the appropriate `refseq-accessions.txt` or `genbank-accessions.txt` lists.
+
+
+If this script turns out being useful for your research, I'd greatly appreciate the citation
+Please cite: __Reyes-Umana, V., Henning, Z., Lee, K. et al. Genetic and phylogenetic analysis of dissimilatory iodate-reducing bacteria identifies potential niches across the world’s oceans. ISME J (2021). https://doi.org/10.1038/s41396-021-01034-5__
+
+## Comparative genomics of DIR Tutorial
+
+How conserved are the proteins near iodate reductase (IdrA) across the phylogeny of IdrA and IdrA/AioA-like proteins?
 
 ## Methods
 
