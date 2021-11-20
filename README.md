@@ -33,7 +33,7 @@ $ hmmbuild fasta.hmm fasta.aln
 
 You should then test your HMM to set an appropriate threshold. There are many considerations in determining threshold beyond the scope of this tutorial, but one great place to start is testing your HMM against the reference protein dataset on [EMBL-EBI's HMMER Search](https://www.ebi.ac.uk/Tools/hmmer/search/hmmsearch). 
 
-Last thing you're going to want is genomes! This is covered in the methods below; however, a good start would be to take the Genbank or RefSeq accessions from the EMBL-EBI search and place them into the appropriate `refseq-accessions.txt` or `genbank-accessions.txt` lists.
+Last thing you're going to want is genomes! This is covered in the methods below; however, a good start would be to take the Genbank or RefSeq accessions from the EMBL-EBI search and place them into the appropriate `refseq-accessions.txt` or `genbank-accessions.txt` lists in your `genomes` folder.
 
 
 If this script turns out being useful for your research, I'd greatly appreciate the citation
